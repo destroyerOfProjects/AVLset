@@ -198,6 +198,7 @@ class Set {
   static bool IsEqual(const ValueType& x, const ValueType& y) {
     return !(x < y || y < x);
   }
+
   int GetHeight(Node* v) const {
     if (!v) {
       return 0;
