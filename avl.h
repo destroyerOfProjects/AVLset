@@ -83,7 +83,7 @@ class Set {
     if (this == &s) {
       return *this;
     }
-    Clear();
+    ClearRecursive();
     for (const auto& elem : s) {
       insert(elem);
     }
@@ -91,7 +91,7 @@ class Set {
   }
 
   ~Set() {
-    Clear();
+    ClearRecursive();
   }
 
   size_t size() const {
@@ -371,17 +371,17 @@ class Set {
   }
 
   void Clear() {
-    Clear(root_);
+    ClearRecursive(root_);
     size_ = 0;
     root_ = nullptr;
   }
 
-  void Clear(Node* v) {
+  void ClearRecursive(Node* v) {
     if (!v) {
       return;
     }
-    Clear(v->left);
-    Clear(v->right);
+    ClearRecursive(v->left);
+    ClearRecursive(v->right);
     delete v;
   }
 
