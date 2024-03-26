@@ -111,11 +111,6 @@ class Set {
     root_ = Erase(root_, elem);
   }
 
-  void Print() {
-    Print(root_);
-    std::cout << "\n";
-  }
-
   class iterator {
    public:
     iterator operator++() {
@@ -145,7 +140,7 @@ class Set {
     }
 
     bool operator!=(iterator it) const {
-      return (this != it);
+      return v != it.v;
     }
 
     iterator() {
@@ -177,11 +172,7 @@ class Set {
   }
 
   iterator end() const {
-    return nullptr;
-  }
-
-  static bool IsEqual(const ValueType& x, const ValueType& y) {
-    return !(x < y || y < x);
+    return iterator(nullptr);
   }
 
   iterator find(const ValueType& elem) const {
@@ -197,17 +188,17 @@ class Set {
     return iterator(v);
   }
 
-  /// TODO: for auto
-  void Print(Node* v) const {
-    if (!v) {
-      return;
+  void print() {
+    for (const auto& elem : *this) {
+      std::cout << elem << " ";
     }
-    Print(v->left);
-    std::cout << v->value << ' ';
-    Print(v->right);
+    std::cout << "\n";
   }
 
  private:
+  static bool IsEqual(const ValueType& x, const ValueType& y) {
+    return !(x < y || y < x);
+  }
   int GetHeight(Node* v) const {
     if (!v) {
       return 0;

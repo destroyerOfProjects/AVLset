@@ -21,25 +21,9 @@ void Test() {
   assert(s.size() == 4);
   s.insert(13);
   s.erase(7);
-  s.Print();
+  s.print();
 }
 
 int main() {
   Test();
 }
-
-/*
-12
-+ 3
-+ 1
-+ 0
-? 0
-> 2
-> 4
-<
-+ 2
-+ 2
-<
-+ 13
-> 7
-*/
