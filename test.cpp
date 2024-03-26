@@ -24,6 +24,20 @@ void Test() {
   s.print();
 }
 
+void Stress() {
+  Set<int> s;
+  const int N = 1e6;
+  for (size_t i = 0; i < N; i++) {
+    s.insert(N - i);
+  }
+  assert(s.size() == N);
+  for (size_t i = 0; i < N; i++) {
+    s.erase(N - i);
+  }
+  assert(s.empty());
+}
+
 int main() {
   Test();
+  Stress();
 }

@@ -342,13 +342,16 @@ class Set {
       } else if (v->left) {
         Node* tmp = v;
         v = v->left;
+        size_ -= 1;
         delete tmp;
       } else if (v->right) {
         Node* tmp = v;
         v = v->right;
+        size_ -= 1;
         delete tmp;
       } else {
         delete v;
+        size_ -= 1;
         return nullptr;
       }
       v = FixBalance(v);
