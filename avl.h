@@ -74,8 +74,8 @@ class Set {
   }
 
   Set(const Set& s) {
-    for (auto it : s) {
-      insert(*it);
+    for (const auto& elem : s) {
+      insert(elem);
     }
   }
 
@@ -84,15 +84,14 @@ class Set {
       return *this;
     }
     Clear();
-    for (auto it : s) {
-      insert(*it);
+    for (const auto& elem : s) {
+      insert(elem);
     }
     return *this;
   }
 
   ~Set() {
     Clear();
-    delete root_;  // ???
   }
 
   size_t size() const {
